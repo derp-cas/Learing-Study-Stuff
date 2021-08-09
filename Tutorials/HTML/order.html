@@ -1,0 +1,27 @@
+<!-- Browser read CSS fomr top to bottom in order of their declaration.  
+    Browser will use whichever CSS declaration came last. 
+    Order of use in tag does notmatter.  
+
+    id declarations override class declarations, regardless of where they 
+    re declared in your style element CSS.
+-->
+
+<style>
+    body {
+        background-color: black;
+        font-family: monospace;
+        color: green;
+    }
+    #orange-text {
+        color: orange;
+    }
+    .pink-text {
+        color: pink;
+    }
+    .blue-text {
+        color: blue;
+    }
+</style>
+<h1 style="color: white" class="pink-text blue-text" id="orange-text">
+    Hello World!
+</h1>
