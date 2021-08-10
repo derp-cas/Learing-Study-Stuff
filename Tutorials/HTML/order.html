@@ -4,6 +4,10 @@
 
     id declarations override class declarations, regardless of where they 
     re declared in your style element CSS.
+
+    inline styles will override all the CSS declarations in your style element.
+
+    !important overrides everything power over 9000
 -->
 
 <style>
@@ -16,7 +20,7 @@
         color: orange;
     }
     .pink-text {
-        color: pink;
+        color: pink !important;
     }
     .blue-text {
         color: blue;
