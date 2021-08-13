@@ -1,0 +1,116 @@
+<!-- <style>
+    .item1 {
+        background: LightSkyBlue;
+    }
+    .item2 {
+        background: LightSalmon;
+    }
+    .item3 {
+        background: PaleTurquoise;
+    }
+    .item4 {
+        background: LightPink;
+    }
+    .item5 {
+        background: PaleGreen;
+    }
+
+    .container {
+        font-size: 40px;
+        min-height: 100px;
+        width: 100%;
+        background: LightGray;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    .container2 {
+        font-size: 40px;
+        min-height: 100px;
+        width: 100%;
+        background: Silver;
+        display: grid;
+        /* auto-fit works almost identically to auto-fill. The only difference is that 
+        when the container's size exceeds the size of all the items combined, 
+        auto-fill keeps inserting empty rows or columns and pushes your items to the 
+        hile auto-fit collapses those empty rows or columns and stretches your items to 
+        fit the size of the container.
+        Note: If your container can't fit all your items on one row, it will 
+        move them down to a new one. */
+        grid-template-columns: repeat(autp-fit, minmax(60px, 1fr));
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-gap: 10px;
+    }
+</style>
+<div class="container">
+    <div class="item1">1</div>
+    <div class="item2">2</div>
+    <div class="item3">3</div>
+    <div class="item4">4</div>
+    <div class="item5">5</div>
+</div>
+<div class="container2">
+    <div class="item1">1</div>
+    <div class="item2">2</div>
+    <div class="item3">3</div>
+    <div class="item4">4</div>
+    <div class="item5">5</div>
+</div> -->
+
+<style>
+    .container {
+        font-size: 1.5em;
+        min-height: 300px;
+        width: 100%;
+        background: LightGray;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-gap: 10px;
+        grid-template-areas:
+            "advert header"
+            "advert content"
+            "advert footer";
+    }
+    .item1 {
+        background: LightSkyBlue;
+        grid-area: header;
+    }
+
+    .item2 {
+        background: LightSalmon;
+        grid-area: advert;
+    }
+
+    .item3 {
+        background: PaleTurquoise;
+        grid-area: content;
+        display: auto;
+        grid-template-columns: 1fr;
+    }
+
+    .item4 {
+        background: lightpink;
+        grid-area: footer;
+    }
+
+    .itemOne {
+        background: PaleGreen;
+    }
+
+    .itemTwo {
+        background: BlanchedAlmond;
+    }
+</style>
+
+<div class="container">
+    <div class="item1">header</div>
+    <div class="item2">advert</div>
+    <div class="item3">
+        <div class="itemOne">paragraph1</div>
+        <div class="itemTwo">paragraph2</div>
+    </div>
+    <div class="item4">footer</div>
+</div>
