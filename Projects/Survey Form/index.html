@@ -7,5 +7,21 @@
         <link rel="stylesheet" href="styles.css" />
         <title>Document</title>
     </head>
-    <body></body>
+    <body>
+        <h1 id="title">This is not a scam</h1>
+        <p id="description">this is definetly not a scam</p>
+        <form id="survey-form">
+            <!-- User Story #4: Inside the form element, I am required to enter my 
+                name in a field with id="name".
+                User Story #5: Inside the form element, I am required to enter an 
+                email in a field with id="email". -->
+            <fieldset>
+                <legend>Please enter your information</legend>
+                <label for="name">Full Name: </label>
+                <input type="text" id="name" name="name" />
+                <label for="email">Email: </label>
+                <input type="text" id="email" name="email" />
+            </fieldset>
+        </form>
+    </body>
 </html>

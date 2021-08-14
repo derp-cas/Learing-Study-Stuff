@@ -1,7 +1,10 @@
 #img-div {
     width: 100%;
-    background-color: aqua;
-    text-align: center;
+    background-color: rgb(153, 153, 153);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 #image {
     position: relative;
