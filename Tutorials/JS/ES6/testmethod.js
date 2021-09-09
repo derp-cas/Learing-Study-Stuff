@@ -125,3 +125,191 @@ firstRegex.test(firstString);
 let notFirst = "You can't find Ricky now.";
 firstRegex.test(notFirst);
 // The first test call would return true, while the second would return false.
+
+//Match ending string patterns
+let caboose = "The last car on a train is the caboose";
+let lastRegex = /caboose$/; // Change this line
+let result = lastRegex.test(caboose);
+
+//another example
+let theEnding = "This is a never ending story";
+let storyRegex = /story$/;
+storyRegex.test(theEnding);
+let noEnding = "Sometimes a story will have to end";
+storyRegex.test(noEnding);
+//first test returns true, second one false.
+
+//Match all letters and numbers
+let quoteSample = "The five boxing wizards jump quickly.";
+let alphabetRegexV2 = /\w+/g; // Change this line
+let result = quoteSample.match(alphabetRegexV2).length;
+
+//all 4 tests return true
+let longHand = /[A-Za-z0-9_]+/;
+let shortHand = /\w+/;
+let numbers = "42";
+let varNames = "important_var";
+longHand.test(numbers);
+shortHand.test(numbers);
+longHand.test(varNames);
+shortHand.test(varNames);
+
+//match everything but letters and numbers
+// ou can search for the opposite of the \w with \W. Note, the opposite
+//pattern uses a capital letter. This shortcut is the same as [^A-Za-z0-9_].
+let shortHand = /\W/;
+let numbers = "42%";
+let sentence = "Coding!";
+numbers.match(shortHand);
+sentence.match(shortHand);
+//The first match call would return the value ["%"] and the second would return ["!"].
+
+//anotherone lol
+let quoteSample = "The five boxing wizards jump quickly.";
+let nonAlphabetRegex = /W/g; // Change this line
+let result = quoteSample.match(nonAlphabetRegex).length;
+
+//match all numbers
+// \d = [0-9]
+
+let movieName = "2001: A Space Odyssey";
+let numRegex = /\d/g; // Change this line
+let result = movieName.match(numRegex).length;
+
+//match all non-numbers
+
+let movieName = "2001: A Space Odyssey";
+let noNumRegex = /\D/g; // Change this line
+let result = movieName.match(noNumRegex).length;
+
+//match whitespace
+let whiteSpace = "Whitespace. Whitespace everywhere!";
+let spaceRegex = /\s/g;
+whiteSpace.match(spaceRegex);
+// This match call would return [" ", " "].
+
+//anotherone
+let sample = "Whitespace is important in separating words";
+let countWhiteSpace = /\s/g; // Change this line
+let result = sample.match(countWhiteSpace);
+
+//match all non whitespace chars
+let whiteSpace = "Whitespace. Whitespace everywhere!";
+let nonSpaceRegex = /\S/g;
+whiteSpace.match(nonSpaceRegex).length;
+// The value returned by the .length method would be 32.
+
+let sample = "Whitespace is important in separating words";
+let countNonWhiteSpace = /\S/g;
+let result = sample.match(countNonWhiteSpace);
+
+//specify upper and lower nuber of matches
+// For example, to match only the letter a appearing between 3 and 5 times in
+// the string ah, your regex would be /a{3,5}h/.
+let A4 = "aaaah";
+let A2 = "aah";
+let multipleA = /a{3,5}h/;
+multipleA.test(A4);
+multipleA.test(A2);
+// The first test call would return true, while the second would return false.
+
+let ohStr = "Ohhh no";
+let ohRegex = /Oh{3,6}\sno/; // Change this line
+let result = ohRegex.test(ohStr);
+
+//specify only the lower number of the matches
+// For example, to match only the string hah with the letter a
+// appearing at least 3 times, your regex would be /ha{3,}h/.
+
+let A4 = "haaaah";
+let A2 = "haah";
+let A100 = "h" + "a".repeat(100) + "h";
+let multipleA = /ha{3,}h/;
+multipleA.test(A4);
+multipleA.test(A2);
+multipleA.test(A100);
+// In order, the three test calls would return true, false, and true.
+
+//guessed it ANOTHERONE
+let haStr = "Hazzzzah";
+let haRegex = /Haz{4,}ah/; // Change this line
+let result = haRegex.test(haStr);
+//only matches when it has 4 or more letters z's
+
+//specify exact numbers of matches
+let timStr = "Timmmmber";
+let timRegex = /Tim{4}ber/; // Change this line
+let result = timRegex.test(timStr);
+//only matches when it has 4 letters m.
+
+//check for all or none
+let american = "color";
+let british = "colour";
+let rainbowRegex = /colou?r/;
+rainbowRegex.test(american);
+rainbowRegex.test(british);
+// Both uses of the test method would return true.
+
+//expl
+let favWord = "favorite";
+let favRegex = /favou?rite/; // Change this line
+let result = favRegex.test(favWord);
+
+//positive and negativ lookahead
+// Lookaheads are a bit confusing but some examples will help.
+let quit = "qu";
+let noquit = "qt";
+let quRegex = /q(?=u)/;
+let qRegex = /q(?!u)/;
+quit.match(quRegex);
+noquit.match(qRegex);
+// Both of these match calls would return ["q"].
+
+// Here is a (naively) simple password checker that looks for between 3 and 6
+// characters and at least one number:
+let password = "abc123";
+let checkPass = /(?=\w{3,6})(?=\D*\d)/;
+checkPass.test(password);
+
+//anotherone
+let sampleWord = "astronaut";
+let pwRegex = /(?=\w{6,})(?=\w*\d{2})/; // Change this line
+let result = pwRegex.test(sampleWord);
+//passwort is greater than 5 chas long and have two consecutive digits
+
+//check for mixed grouping of characters
+let testStr = "Pumpkin";
+let testRegex = /P(engu|umpk)in/;
+testRegex.test(testStr);
+// The test method here would return true.
+// it would be true for Penguin aswell.
+
+//nother expl
+let myString = "Eleanor Roosevelt";
+let myRegex = /(Franklin|Eleanor).*Roosevelt/; // Change this line
+let result = myRegex.test(myString); // Change this line
+// After passing the challenge experiment with myString and see
+// how the grouping works
+
+//reuse patterns using capture groups
+let repeatStr = "row row row your boat";
+let repeatRegex = /(\w+) \1 \1/;
+repeatRegex.test(repeatStr); // Returns true
+repeatStr.match(repeatRegex); // Returns ["row row row", "row"]
+// Using the .match() method on a string will return an array with the matched substring,
+// along with its captured groups.
+
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+)\s\1\s\1$/; // Change this line
+let result = reRegex.test(repeatNum);
+
+//use capture groups to search and replace
+let str = "one two three";
+let fixRegex = /(\w+)\s(\w+)\s(\w+)/; // Change this line
+let replaceText = "$3 $2 $1"; // Change this line
+let result = str.replace(fixRegex, replaceText);
+
+//remove whitespace from start and end
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$/g; // Change this line
+let result = hello.replace(wsRegex, ""); // Change this line
