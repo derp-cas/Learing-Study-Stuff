@@ -85,3 +85,69 @@ function quickCheck(arr, elem) {
 }
 
 console.log(quickCheck(["squash", "onions", "shallots"], "mushrooms"));
+
+//shorter variant
+function quickCheck(arr, elem) {
+    return arr.indexOf(elem) >= 0 ? true : false;
+}
+console.log(quickCheck(["squash", "onions", "shallots"], "mushrooms"));
+
+//any array nested within arr containing elem will be removed.
+function filteredArray(arr, elem) {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].indexOf(elem) == -1) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+
+console.log(
+    filteredArray(
+        [
+            [3, 2, 3],
+            [1, 6, 3],
+            [3, 13, 26],
+            [19, 3, 9],
+        ],
+        3
+    )
+);
+
+//all data items that are greater than 10 will be returned in newArr
+function greaterThanTen(arr) {
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > 10) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+
+greaterThanTen([2, 12, 8, 14, 80, 0, 1]);
+
+//deep nested array "multidimensional arrays"
+let nestedArray = [
+    ["deep"],
+    [["deeper"], ["deeper2"]],
+    [[["deepest"], ["deepest2"]], [[["deepest-est?"]]]],
+];
+//displays deepest-est?
+console.log(nestedArray[2][1][0][0][0]);
+//displays deeper2
+console.log(nestedArray[1][1][0]);
+//displays deepest 2
+console.log(nestedArray[2][0][1][0]);
+
+//visualisation of "deepnes levels"
+let myNestedArray = [
+    "level 1" /* myNestedArray[0]             */,
+    ["level 2"] /* myNestedArray[1][0]          */,
+    [["level 3", "deep"]] /* myNestedArray[2][0][0]       */,
+    [[["level 4", "deeper"]]] /* myNestedArray[3][0][0][0]    */,
+    [[[["level 5", "deepest"]]]] /* myNestedArray[4][0][0][0][0] */,
+];
+//deepsest
+console.log(myNestedArray[4][0][0][0][1]);
