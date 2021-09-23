@@ -79,6 +79,91 @@ Bird.prototype.fly = function () {
 function Penguin() {}
 Penguin.prototype = Object.create(Bird.prototype);
 Penguin.prototype.constructor = Penguin;
+//overriding the fly function
+Penguin.prototype.fly = function () {
+    return "Alas, this is a flightless bird.";
+};
 
 let penguin = new Penguin();
 console.log(penguin.fly());
+
+//
+//use a mixin to add common behavior between unrelated objects
+let bird = {
+    name: "Donald",
+    numLegs: 2,
+};
+
+let boat = {
+    name: "Warrior",
+    type: "race-boat",
+};
+
+let glideMixin = function (obj) {
+    obj.glide = function () {
+        console.log(obj.name + " is gliding like a boss");
+    };
+};
+//pass both objects to glideMixin
+glideMixin(bird);
+glideMixin(boat);
+//now bird an boat can both glide
+bird.glide();
+boat.glide();
+
+//
+//use closure to protect properties within an object from being modified externally
+//
+// The simplest way to make this public property private is by creating a variable
+// within the constructor function. This changes the scope of that variable to be
+// within the constructor function versus available globally. This way, the variable
+// can only be accessed and changed by methods also within the constructor function.
+function Bird() {
+    let weight = 15;
+    this.getWeight = function () {
+        return weight;
+    };
+}
+//another example
+function Bird() {
+    let hatchedEgg = 10;
+
+    this.getHatchedEggCount = function () {
+        return hatchedEgg;
+    };
+}
+let ducky = new Bird();
+ducky.getHatchedEggCount();
+
+//
+//immidiately invoked function expression(IIFE)
+//the () at the end of the fucntion cause it to be immidiately executed or invoked
+(function () {
+    console.log("A cozy nest is ready");
+})();
+
+//
+//use an IIFE to create a module
+let funModule = (function () {
+    return {
+        isCuteMixin: function (obj) {
+            obj.isCute = function () {
+                return true;
+            };
+        },
+        singMixin: function (obj) {
+            obj.sing = function () {
+                console.log(obj.name + " Sing to an awesome tune");
+            };
+        },
+    };
+})();
+
+let dog = {
+    name: "Doggo",
+    race: "Shiba Inu",
+};
+funModule.isCuteMixin(dog);
+funModule.singMixin(dog);
+dog.isCute();
+dog.sing();
