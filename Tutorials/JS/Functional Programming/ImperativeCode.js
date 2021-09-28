@@ -19,8 +19,8 @@ Window.prototype.tabOpen = function (tab) {
 Window.prototype.tabClose = function (index) {
     // Only change code below this line
 
-    var tabsBeforeIndex = this.tabs.splice(0, index); // Get the tabs before the tab
-    var tabsAfterIndex = this.tabs.splice(index + 1); // Get the tabs after the tab
+    var tabsBeforeIndex = this.tabs.slice(0, index); // Get the tabs before the tab
+    var tabsAfterIndex = this.tabs.slice(index + 1); // Get the tabs after the tab
 
     this.tabs = tabsBeforeIndex.concat(tabsAfterIndex); // Join them together
 
@@ -31,7 +31,7 @@ Window.prototype.tabClose = function (index) {
 
 // Let's create three browser windows
 var workWindow = new Window([
-    "GMail",
+    // "GMail",
     "Inbox",
     "Work mail",
     "Docs",
