@@ -34,4 +34,39 @@ function incrementer(x) {
 console.log(incrementer(fixedValue));
 
 //
-//Re
+//Return part of an array using the slice method
+function sliceArray(anim, beginSlice, endSlice) {
+    let slicedArray = anim.slice(beginSlice, endSlice);
+    return slicedArray;
+}
+var inputAnim = ["Cat", "Dog", "Tiger", "Zebra", "Ant"];
+sliceArray(inputAnim, 1, 3);
+
+//
+//Remove elements from an array using slice instead of splice
+function nonMutatingSplice(cities) {
+    let newArray = cities.slice(0, 3);
+    return newArray;
+}
+var inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+nonMutatingSplice(inputCities);
+
+//
+//Combine two arrays using the concat method
+function nonMutatingConcat(original, attach) {
+    let newArray = original.concat(attach);
+    return newArray;
+}
+var first = [1, 2, 3];
+var second = [4, 5];
+nonMutatingConcat(first, second);
+
+//
+//Add Elements to the end of an array using concat instead of push
+function nonMutatingPush(original, newItem) {
+    let newArray = original.concat(newItem);
+    return newArray;
+}
+var first = [1, 2, 3];
+var second = [4, 5];
+nonMutatingPush(first, second);
